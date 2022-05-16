@@ -4,30 +4,30 @@ const XML10ProcessingInstruction = `xml version="1.0" encoding="UTF-8"`
 
 // Document represents an XML document consisting with an optional list of
 // namespaces, and ProcessingInstruction.
-// Use SetRoot to set the document's root node.
+// Use SetRoot to set the document's Root node.
 type Document struct {
 	Namespaces            []*Namespace
 	ProcessingInstruction string
-	root                  *Node
+	Root                  *Node
 }
 
-// Root returns the document's root node.
-func (d Document) Root() *Node {
-	return d.root
+// Root returns the document's Root node.
+func (d Document) GetRoot() *Node {
+	return d.Root
 }
 
-// SetRoot sets the document's root node.
+// SetRoot sets the document's Root node.
 func (d *Document) SetRoot(n *Node) {
 	if n != nil {
 		n.Parent = nil
 		n.parentDoc = d
 	}
-	d.root = n
+	d.Root = n
 }
 
 // String returns the Document's XML representation.
 func (d Document) String() string {
-	return printXML(d)
+	return PrintXML(d)
 }
 
 // AddNamespace registers a new namespace to be used within nodes of this

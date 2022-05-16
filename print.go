@@ -16,14 +16,15 @@ const (
 	linebreak = "\n"
 )
 
-func printXML(d Document) string {
+func PrintXML(d Document) string {
 	b := newBuilder()
 	if d.ProcessingInstruction != "" {
 		b.writeString(fmt.Sprintf("<?%s?>\n", d.ProcessingInstruction))
 	}
 
-	r := d.root
+	r := d.Root
 	if r == nil {
+		fmt.Println("In previous return")
 		return b.String()
 	}
 
